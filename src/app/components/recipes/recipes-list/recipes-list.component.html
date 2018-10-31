@@ -1,0 +1,20 @@
+<div class="row mt-5">
+  <div class="col-12">
+    <button class="btn btn-outline-success"><i class="fas fa-plus"></i> Add Recipe</button>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <a href="#" class="card card-body flex-row justify-content-between" *ngFor='let recipe of recipes'>
+      <div>
+        <h4>{{recipe.name}}</h4>
+        <p class="muted">{{recipe.description}}</p>
+      </div>
+      <div class="img-wrap">
+        <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-fluid rounded-circle img-desc">
+      </div>
+    </a>
+
+    <app-single-recipe></app-single-recipe>
+  </div>
+</div>
