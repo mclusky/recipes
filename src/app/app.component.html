@@ -1,9 +1,9 @@
-<app-navbar></app-navbar>
+<app-navbar (listSelected)="displayList = !displayList" (recipeSelected)="displayRecipes = !displayRecipes"></app-navbar>
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="displayRecipes"></app-recipes>
+      <app-shopping-list *ngIf="displayList"></app-shopping-list>
     </div>
   </div>
 </div>
