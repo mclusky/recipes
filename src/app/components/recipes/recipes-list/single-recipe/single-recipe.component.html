@@ -1,3 +1,9 @@
-<p>
-  single-recipe works!
-</p>
+<a href="#" class="card card-body flex-row justify-content-around" (click)='recipeSelected()'>
+  <div class="text-center">
+    <h4>{{recipe.name}}</h4>
+    <p class="muted">{{recipe.description}}</p>
+  </div>
+  <div class="img-wrap">
+    <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-fluid rounded-circle img-desc">
+  </div>
+</a>

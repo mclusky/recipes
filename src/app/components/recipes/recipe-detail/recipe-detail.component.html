@@ -1,9 +1,9 @@
-<div class="row mt-5">
+<div class="row mt-5" *ngIf=singleRecipe>
   <div class="col-12">
-    <img src="" alt="" class="img-fluid">
+    <img src="{{singleRecipe.imagePath}}" alt="" class="img-fluid">
   </div>
   <div class="col-12">
-    <h2>Recipe Name</h2>
+    <h2>{{singleRecipe.name}}</h2>
   </div>
   <div class="col-12">
     <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Recipe</button>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="col-12">
-    Description
+    {{singleRecipe.description}}
   </div>
   <div class="col-12">
     Ingredients
