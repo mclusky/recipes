@@ -1,6 +1,6 @@
 <div class="row mt-5">
   <div class="col-10">
-    <app-edit-shopping-list (newItem)="addIngredient($event)"></app-edit-shopping-list>
+    <app-edit-shopping-list></app-edit-shopping-list>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let ingredient of ingredients">
         <a href="#">{{ingredient.name}}, {{ingredient.amount}}{{ingredient.amountType}}</a>
