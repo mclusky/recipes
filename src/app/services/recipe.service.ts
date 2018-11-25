@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { Ingredient } from '../models/ingredient';
 
@@ -6,7 +6,7 @@ import { Ingredient } from '../models/ingredient';
     providedIn: 'root'
 })
 export class RecipeService {
-    recipeSelected = new EventEmitter<Recipe>();
+
     private recipes: Recipe[] = [
         new Recipe(
             'Pizza', 'great pizza', 'https://slice.seriouseats.com/assets_c/2013/09/20130926-crazy-pizza-cat-thumb-625xauto-354936.jpg',
@@ -22,6 +22,10 @@ export class RecipeService {
             ]),
     ];
     constructor() { }
+
+    getRecipe(index: number) {
+        return this.recipes[index];
+    }
 
     getRecipes() {
         return this.recipes.slice();

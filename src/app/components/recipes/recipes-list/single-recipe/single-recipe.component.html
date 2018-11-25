@@ -1,4 +1,4 @@
-<a href="#" class="card card-body flex-row justify-content-around" (click)='recipeSelected()'>
+<a style="cursor: pointer" [routerLink]="[index]" class="card card-body flex-row justify-content-around" routerLinkActive='bg-dark text-white'>
   <div class="text-center">
     <h4>{{recipe.name}}</h4>
     <p class="muted">{{recipe.description}}</p>

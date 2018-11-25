@@ -2,8 +2,8 @@
   <div class="col-10">
     <app-edit-shopping-list></app-edit-shopping-list>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let ingredient of ingredients">
-        <a href="#">{{ingredient.name}}, {{ingredient.amount}}{{ingredient.amountType}}</a>
+      <li class="list-group-item" *ngFor="let ingredient of ingredients; let i = index" (click)='onEdit(i)'>
+        <a>{{ingredient.name}}, {{ingredient.amount}}</a>
       </li>
     </ul>
   </div>
