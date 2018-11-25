@@ -1,3 +1,53 @@
-<p>
-  recipe-edit works!
-</p>
+<div class="row mt-5">
+  <div class="col-12">
+    <form [formGroup]='recipeForm' (ngSubmit)='onSubmit()'>
+      <div class="row">
+        <div class="col-12">
+          <button type='submit' class="btn btn-outline-success mr-3" [disabled]='!recipeForm.valid'>Save</button>
+          <button class="btn btn-outline-danger" (click)='onCancel()'>Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group mt-3">
+            <label for="name">Recipe</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="text" class="form-control" id="image" formControlName="imagePath" #imgPath>
+          </div>
+          <div>
+            <img [src]="imgPath.value" alt="" class="img-fluid">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="6" class="form-control" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="container" formArrayName="ingredients">
+        <div class="row" [formGroupName]="i" *ngFor='let ing of getControls(); let i = index'>
+          <div class="col-md-7">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="name">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="number" class="form-control" formControlName="amount">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button type='button' class="btn btn-outline-danger" (click)='onDeleteIng(i)'><i class="far fa-trash-alt"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 my-2">
+          <button type='button' class="btn btn-outline-info btn-block" (click)='onAddIng()'>Add Ingredient</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
