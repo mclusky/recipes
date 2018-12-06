@@ -21,16 +21,21 @@ export class ShopListService implements OnInit {
         return this.ingredients.slice();
     }
 
-    addIngredient(ingredient: Ingredient) {
-        this.ingredients.map((ing, i) => {
-            if (ing.name.toLowerCase() === ingredient.name.toLowerCase()) {
-                this.ingredients[i].amount += ingredient.amount;
-            }
-        });
-        if (!this.ingredients.find(ing => ing.name.toLowerCase() === ingredient.name.toLowerCase())) {
-            this.ingredients.push(ingredient);
-        }
+    addSingleIngredient(ing: Ingredient) {
+        this.isIngredientPresent(ing);
         this.ingredientChanged.next(this.ingredients.slice());
+    }
+
+    addIngredient(ingredients: Ingredient[]) {
+        ingredients.map(ing => {
+            this.isIngredientPresent(ing);
+        });
+        this.ingredientChanged.next(this.ingredients.slice());
+    }
+
+    isIngredientPresent(ing) {
+        const index = this.ingredients.findIndex(item => item.name.toLowerCase() === ing.name.toLowerCase());
+        index === - 1 ? this.ingredients.push(ing) : this.ingredients[index].amount += ing.amount;
     }
 
     getIngredient(i: number) {

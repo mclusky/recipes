@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe';
 import { ShopListService } from 'src/app/services/shop-list.service';
-import { Ingredient } from 'src/app/models/ingredient';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from 'src/app/services/recipe.service';
 
@@ -28,9 +27,8 @@ export class RecipeDetailComponent implements OnInit {
     }
 
     onAddIng() {
-        this.singleRecipe.ingredients.map((ing: Ingredient) => {
-            this.shopService.addIngredient(ing);
-        });
+        const ingToAdd = JSON.parse(JSON.stringify(this.singleRecipe.ingredients));
+        this.shopService.addIngredient(ingToAdd);
     }
 
     onEditRecipe() {

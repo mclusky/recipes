@@ -1,38 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { EditShoppingListComponent } from './components/edit-shopping-list/edit-shopping-list.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
-import { SingleRecipeComponent } from './components/recipes/recipes-list/single-recipe/single-recipe.component';
-import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
-import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
-import { DropdownDirective } from './directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
-import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
+import { HttpModule } from '@angular/http';
+
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
+import { AuthModule } from './auth/auth.module';
+import { HomeComponent } from './components/home/home.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        ShoppingListComponent,
         NavbarComponent,
-        EditShoppingListComponent,
-        RecipesComponent,
-        SingleRecipeComponent,
-        RecipesListComponent,
-        RecipeDetailComponent,
-        DropdownDirective,
-        RecipeStartComponent,
-        RecipeEditComponent,
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        AppRoutingModule
+        HttpModule,
+        FlashMessagesModule.forRoot(),
+        ShoppingListModule,
+        AppRoutingModule,
+        AuthModule
     ],
     providers: [],
     bootstrap: [AppComponent]
