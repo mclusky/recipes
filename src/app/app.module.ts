@@ -8,6 +8,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { shopppingListReducer } from './components/shopping-list/ngrx/shopping-list.reducers';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { CoreModule } from './core/core.module';
         ShoppingListModule,
         AppRoutingModule,
         AuthModule,
-        CoreModule
+        CoreModule,
+        StoreModule.forRoot({ shoppingList: shopppingListReducer })
     ],
     providers: [],
     bootstrap: [AppComponent]
