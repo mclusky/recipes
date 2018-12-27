@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { RecipeService } from './recipe.service';
 import { map } from 'rxjs/operators';
-import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 
@@ -12,8 +11,7 @@ import { Recipe } from '../models/recipe';
 export class HttpService {
 
     constructor(private http: HttpClient,
-        private recipeService: RecipeService,
-        private authService: AuthService) { }
+        private recipeService: RecipeService) { }
 
     save() {
         // const token = this.authService.getToken();
