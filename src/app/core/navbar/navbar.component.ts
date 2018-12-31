@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/services/http.service';
 import { Recipe } from 'src/app/models/recipe';
-import { HttpEvent } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducers';
 import * as fromAuth from '../../auth/ngrx/auth.reducers';
 import * as AuthActions from '../../auth/ngrx/auth.actions';
+import * as RecipeActions from '../../components/recipes/ngrx/recipes.actions';
+import * as fromRecipe from '../../components/recipes/ngrx/recipes.reducers';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,8 +17,7 @@ export class NavbarComponent implements OnInit {
     recipes: Recipe[];
     authState: Observable<fromAuth.State>;
     constructor(
-        private httpService: HttpService,
-        private store: Store<fromApp.AppState>
+        private store: Store<fromRecipe.State>
     ) { }
 
     ngOnInit() {
@@ -26,16 +25,11 @@ export class NavbarComponent implements OnInit {
     }
 
     onSave() {
-        this.httpService
-            .save()
-            .subscribe(
-                (response: HttpEvent<Object>) => console.log(response),
-                (error) => console.log(error)
-            );
+        this.store.dispatch(new RecipeActions.SaveRecipe());
     }
 
     onGet() {
-        this.httpService.getRecipes();
+        this.store.dispatch(new RecipeActions.FetchRecipes());
     }
 
     onLogout() {

@@ -10,13 +10,19 @@ import { DropdownDirective } from 'src/app/directives/dropdown.directive';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SingleRecipeComponent } from './recipes-list/single-recipe/single-recipe.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { recipeReducer } from './ngrx/recipes.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { RecipeEffects } from './ngrx/recipes.effects';
 
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
         RecipesRoutingModule,
-        SharedModule
+        SharedModule,
+        StoreModule.forFeature('recipes', recipeReducer),
+        EffectsModule.forFeature([RecipeEffects])
     ],
     declarations: [
         RecipesComponent,
@@ -24,7 +30,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
         RecipesListComponent,
         RecipeEditComponent,
         RecipeDetailComponent,
-        SingleRecipeComponent
+        SingleRecipeComponent,
     ]
 })
 export class RecipesModule { }

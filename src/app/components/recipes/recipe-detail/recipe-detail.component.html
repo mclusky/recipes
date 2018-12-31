@@ -1,9 +1,9 @@
-<div class="row mt-5" *ngIf=singleRecipe>
+<div class="row mt-5" *ngIf=singleRecipeState>
   <div class="col-12">
-    <img src="{{singleRecipe.imagePath}}" alt="" class="img-fluid">
+    <img src="{{(singleRecipeState | async).recipes[id].imagePath}}" alt="" class="img-fluid">
   </div>
   <div class="col-12">
-    <h2>{{singleRecipe.name}}</h2>
+    <h2>{{(singleRecipeState | async).recipes[id].name}}</h2>
   </div>
   <div class="col-12" appDropdown>
     <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Recipe</button>
@@ -14,11 +14,11 @@
     </div>
   </div>
   <div class="col-12">
-    {{singleRecipe.description}}
+    {{(singleRecipeState | async).recipes[id].description}}
   </div>
   <div class="col-12">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor='let ing of singleRecipe.ingredients'>
+      <li class="list-group-item" *ngFor='let ing of (singleRecipeState | async).recipes[id].ingredients'>
         {{ing.name}} - {{ing.amount}}
       </li>
     </ul>
